@@ -1,0 +1,10 @@
+node_modules/
+dist/
+
+# Local secrets and machine-specific config
+.env
+profiles.json
+
+# Editor/OS
+.DS_Store
+*.log

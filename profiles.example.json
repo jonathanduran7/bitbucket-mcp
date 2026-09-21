@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "activeProfile": "personal",
+  "profiles": {
+    "personal": {
+      "defaultWorkspace": "my-personal-workspace",
+      "defaultRepo": "my-side-project"
+    },
+    "work": {
+      "defaultWorkspace": "acme-corp"
+    }
+  }
+}
