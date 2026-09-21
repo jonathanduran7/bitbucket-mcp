@@ -1,0 +1,52 @@
+schema: spec-driven
+
+context: |
+  Project: bitbucket-mcp
+  Tech stack: TypeScript, Node.js, MCP SDK oficial (Model Context Protocol),
+    Zod (schema validation), fetch nativo (sin cliente HTTP externo)
+  Architecture: MCP Server para Bitbucket Cloud — sin código aún, proyecto
+    greenfield, stack decidido de antemano por el usuario
+  Testing: sin test runner configurado todavía. Recomendado: vitest o
+    node:test (ver testing-capabilities)
+  Style: a definir en la primera implementación (sdd-propose/sdd-design)
+
+strict_tdd: false
+
+testing:
+  runner: none
+  recommended_runner: vitest
+  recommended_reason: >
+    Proyecto TypeScript/Node greenfield sin dependencias de framework web;
+    vitest da soporte nativo a TS/ESM sin configuración extra y se integra
+    bien con Zod para tests de validación de schemas. node:test es una
+    alternativa cero-dependencias si se prefiere no sumar devDependencies.
+  coverage: none
+  linter: none
+  type_checker: none
+  formatter: none
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Justificar cualquier dependencia nueva además de @modelcontextprotocol/sdk y zod
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Documentar los scopes/permisos de Bitbucket Cloud requeridos por cada tool MCP
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+    - Definir manejo de autenticación (App Password / API token) y rate limiting de Bitbucket Cloud
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns
+    tdd: false # activar cuando se configure vitest/node:test
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: ""
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
