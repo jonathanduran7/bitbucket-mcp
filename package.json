@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "MCP server for Bitbucket Cloud (MVP)",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanduran7/bitbucket-mcp.git"
+  },
+  "homepage": "https://github.com/jonathanduran7/bitbucket-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/jonathanduran7/bitbucket-mcp/issues"
+  },
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },
