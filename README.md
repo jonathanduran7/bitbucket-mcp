@@ -13,22 +13,33 @@ below.
 
 ## Quick start
 
-```bash
-npm install
-npm run build   # compiles src/ -> dist/
-```
+Published on npm — no need to clone this repo. Point your MCP client at it
+with `npx`, passing `BITBUCKET_EMAIL` and `BITBUCKET_TOKEN` as environment
+variables (see [Using this server from an MCP
+client](#using-this-server-from-an-mcp-client) for the full config JSON).
+See [Creating a Bitbucket API token](#creating-a-bitbucket-api-token) if you
+don't have one yet.
 
-Then point your MCP client at `node dist/index.js`, passing `BITBUCKET_EMAIL`
-and `BITBUCKET_TOKEN` as environment variables (see [Using this server from
-an MCP client](#using-this-server-from-an-mcp-client) for the full config
-JSON). See [Creating a Bitbucket API token](#creating-a-bitbucket-api-token)
-if you don't have one yet.
+```json
+{ "command": "npx", "args": ["-y", "@jonathanduran7/bitbucket-mcp"] }
+```
 
 ## Installation
 
-Requires Node.js >= 20.
+### From npm (recommended)
+
+Requires Node.js >= 20. No local clone/build needed — `npx` downloads and
+caches the package on first run:
 
 ```bash
+npx -y @jonathanduran7/bitbucket-mcp
+```
+
+### From source
+
+```bash
+git clone https://github.com/jonathanduran7/bitbucket-mcp.git
+cd bitbucket-mcp
 npm install
 npm run build   # compiles src/ -> dist/ via tsc
 ```
@@ -131,15 +142,16 @@ or write against was judged too easy to get wrong.
 
 ## Using this server from an MCP client
 
-Point your MCP client at the built server over stdio. Example
-configuration (Claude Code / Codex-style JSON config):
+The server communicates over stdio. Example configuration (Claude Code /
+Codex-style JSON config), using the published npm package — no clone or
+build required:
 
 ```json
 {
   "mcpServers": {
     "bitbucket": {
-      "command": "node",
-      "args": ["/absolute/path/to/bitbucket-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@jonathanduran7/bitbucket-mcp"],
       "env": {
         "BITBUCKET_EMAIL": "you@example.com",
         "BITBUCKET_TOKEN": "your-api-token-here"
@@ -149,7 +161,14 @@ configuration (Claude Code / Codex-style JSON config):
 }
 ```
 
-For local development without a build step, swap the `command`/`args` for:
+If you built it from source instead, point `command`/`args` at the compiled
+output:
+
+```json
+{ "command": "node", "args": ["/absolute/path/to/bitbucket-mcp/dist/index.js"] }
+```
+
+For local development without a build step, swap `command`/`args` for:
 
 ```json
 { "command": "npx", "args": ["-y", "tsx", "/absolute/path/to/bitbucket-mcp/src/index.ts"] }
