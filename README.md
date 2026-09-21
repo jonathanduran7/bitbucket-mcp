@@ -11,6 +11,19 @@ This is an MVP: read-heavy tool surface, a focused set of write tools
 issues, pipelines, or webhooks. See [Out of scope](#out-of-scope--next-steps)
 below.
 
+## Quick start
+
+```bash
+npm install
+npm run build   # compiles src/ -> dist/
+```
+
+Then point your MCP client at `node dist/index.js`, passing `BITBUCKET_EMAIL`
+and `BITBUCKET_TOKEN` as environment variables (see [Using this server from
+an MCP client](#using-this-server-from-an-mcp-client) for the full config
+JSON). See [Creating a Bitbucket API token](#creating-a-bitbucket-api-token)
+if you don't have one yet.
+
 ## Installation
 
 Requires Node.js >= 20.
